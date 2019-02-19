@@ -62,10 +62,10 @@ describe('Park', function() {
     assert.equal(actual, expected);
   });
 
-  it('should be able to find all dinosaurs of a particular species', function (){
+  xit('should be able to find all dinosaurs of a particular species', function (){
     let species = 'herbivore';
     let oneSpeciesOfDino;
-    
+
     oneSpeciesOfDino = park.findDinosBySpecies(species);
 
     const actual = oneSpeciesOfDino.length;
@@ -80,6 +80,11 @@ describe('Park', function() {
     const actual = park.collectionOfDinos.length;
 
     assert.equal(actual, 4);
+  });
+
+  it('should be able to calculate the total number of visitors per day', function (){
+    actual = park.totalVisitorsPerDay();
+    assert.equal(actual, 335);
   });
 
 

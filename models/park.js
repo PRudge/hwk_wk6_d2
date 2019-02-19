@@ -52,6 +52,7 @@ Park.prototype.findDinosBySpecies = function(species){
 Park.prototype.removeDinosBySpecies = function(species){
   const oneSpeciesOfDino = findDinosBySpecies(species);
   let dinoToRemove;
+  let dino
   for (i = 0; i < this.collectionOfDinos.length; i++){
     dino = this.collectionOfDinos[i];
     for (j = 0; j < oneSpeciesOfDino.length; j++){
@@ -61,6 +62,16 @@ Park.prototype.removeDinosBySpecies = function(species){
       }
     }
   }
+};
+
+Park.prototype.totalVisitorsPerDay = function(){
+  numVisitors = 0;
+  let dino;
+  for (i = 0; i < this.collectionOfDinos.length; i++){
+    dino = this.collectionOfDinos[i];
+    numVisitors += dino.guestsAttractedPerDay;
+  }
+return numVisitors;
 };
 
 module.exports = Park;
