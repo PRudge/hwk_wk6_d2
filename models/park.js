@@ -36,33 +36,27 @@ Park.prototype.mostPopularDino = function() {
 };
 
 Park.prototype.findDinosBySpecies = function(species){
-  let oneSpeciesOfDino = [];
   let dino;
 
   for (i = 0; i < this.collectionOfDinos.length; i++){
     dino = this.collectionOfDinos[i];
-
     if (dino.species === species){
-      oneSpeciesOfDino.push(dino);
+      return dino;
     }
   }
-  return oneSpeciesOfDino;
 };
 
 Park.prototype.removeDinosBySpecies = function(species){
-  const oneSpeciesOfDino = findDinosBySpecies(species);
-  let dinoToRemove;
+  const dinosOfOneSpecies = this.findDinosBySpecies(species);
+
   let dino
   for (i = 0; i < this.collectionOfDinos.length; i++){
     dino = this.collectionOfDinos[i];
-    for (j = 0; j < oneSpeciesOfDino.length; j++){
-      dinoToRemove = oneSpeciesOfDino[j];
-      if (dinoToRemove.species === dino.species){
-        this.collectionOfDinos.splice(i, 1);
-      }
+    if (dinosOfOneSpecies.species === dino.species){
+      this.collectionOfDinos.splice(i, 1);
     }
   }
-};
+}
 
 Park.prototype.totalVisitorsPerDay = function(){
   numVisitors = 0;
@@ -72,6 +66,14 @@ Park.prototype.totalVisitorsPerDay = function(){
     numVisitors += dino.guestsAttractedPerDay;
   }
 return numVisitors;
+};
+
+Park.prototype.totalVisitorsPerYear = function(){
+  return this.totalVisitorsPerDay() * 365;
+};
+
+Park.prototype.totalTicketRevForYear = function(){
+  return this.totalVisitorsPerYear() * this.ticketPrice;
 };
 
 module.exports = Park;

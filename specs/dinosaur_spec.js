@@ -8,7 +8,7 @@ describe('Dinosaur', function() {
   beforeEach(function () {
     dinosaur = new Dinosaur('t-rex', 'carnivore', 50);
   });
-  
+
 
   it('should have a species', function () {
     const actual = dinosaur.species;
@@ -24,5 +24,6 @@ describe('Dinosaur', function() {
     const actual = dinosaur.guestsAttractedPerDay;
     assert.strictEqual(actual, 50);
   });
+  
 
 });
