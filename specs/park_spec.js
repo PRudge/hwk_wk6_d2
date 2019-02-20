@@ -12,7 +12,7 @@ describe('Park', function() {
     const dino2 = new Dinosaur('Spinosaurus', 'carnivore', 20);
     const dino3 = new Dinosaur('Diplodocus', 'herbivore', 50);
     const dino4 = new Dinosaur('Triceratops', 'herbivore', 150);
-    const dino5 = new Dinosaur('Ornithomimus', 'omnivore', 50);
+    const dino5 = new Dinosaur('Ornithomimus', 'herbivore', 50);
     const dino6 = new Dinosaur('Titanosaurus', 'omnivore', 15);
     const dinos = [dino1, dino2, dino3, dino4, dino5, dino6];
 
@@ -108,8 +108,12 @@ describe('Park', function() {
 
   it('should be able to create an object for diet requirements', function (){
       const dietType = park.dietTypeCount();
-      const actual = dietType.carnivore;
+      let actual = dietType.carnivore;
       assert.equal(actual, 2);
+      actual = dietType.omnivore;
+      assert.equal(actual, 1);
+      actual = dietType.herbivore;
+      assert.equal(actual, 3);
   });
 
 
