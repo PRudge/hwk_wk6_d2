@@ -101,10 +101,16 @@ describe('Park', function() {
     assert.equal(actual, 335*365);
   });
 
-    it('should be able to calculate the total ticket revenue per year', function (){
+  it('should be able to calculate the total ticket revenue per year', function (){
       actual = park.totalTicketRevForYear();
       assert.equal(actual, 335*365*25);
-    });
+  });
+
+  it('should be able to create an object for diet requirements', function (){
+      const dietType = park.dietTypeCount();
+      const actual = dietType.carnCount;
+      assert.equal(actual, 2);
+  });
 
 
 });

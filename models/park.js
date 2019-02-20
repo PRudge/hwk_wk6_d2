@@ -85,4 +85,31 @@ Park.prototype.totalTicketRevForYear = function(){
   return this.totalVisitorsPerYear() * this.ticketPrice;
 };
 
+Park.prototype.dietTypeCount = function(){
+  let carnCount = 0;
+  let herbCount = 0;
+  let omniCount = 0;
+  let dino;
+  let dietType = {};
+
+  for (i = 0; i < this.collectionOfDinos.length; i++){
+    dino = this.collectionOfDinos[i];
+
+    switch (dino.species) {
+      case 'herbivore': herbCount += 1;
+           break;
+      case 'omnivore': omniCount += 1;
+           break;
+      case 'carnivore': carnCount += 1;
+           break;
+    }
+  }
+
+  return dietType = { // MODIFIED
+  carnivore: carnCount,
+  herbivore: herbCount,
+  omnivore: omniCount}
+
+};
+
 module.exports = Park;
