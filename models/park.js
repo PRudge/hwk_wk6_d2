@@ -10,11 +10,11 @@ Park.prototype.addDino = function(newDino) {
   this.collectionOfDinos.push(newDino);
 };
 
-Park.prototype.removeDinoByName = function(remDino){
+Park.prototype.removeDino = function(remDino){
   let dino;
   for (i = 0; i < this.collectionOfDinos.length; i++){
     dino = this.collectionOfDinos[i];
-    if (dino.name === remDino.name)  {
+    if (dino.species === remDino.species)  {
       this.collectionOfDinos.splice(i, 1);
       break;
     }
@@ -37,26 +37,35 @@ Park.prototype.mostPopularDino = function() {
 
 Park.prototype.findDinosBySpecies = function(species){
   let dino;
+  let oneSpeciesOfDino = [];
 
   for (i = 0; i < this.collectionOfDinos.length; i++){
     dino = this.collectionOfDinos[i];
     if (dino.species === species){
-      return dino;
+      oneSpeciesOfDino.push(dino);
     }
   }
+  return oneSpeciesOfDino;
 };
 
 Park.prototype.removeDinosBySpecies = function(species){
   const dinosOfOneSpecies = this.findDinosBySpecies(species);
 
-  let dino
+  let dino;
+  let dinoToGo;
+
   for (i = 0; i < this.collectionOfDinos.length; i++){
     dino = this.collectionOfDinos[i];
-    if (dinosOfOneSpecies.species === dino.species){
-      this.collectionOfDinos.splice(i, 1);
+    for (j = 0; j < dinosOfOneSpecies.length; j++){
+      dinoToGo = dinosOfOneSpecies[j];
+      if (dino.species === dinoToGo.species){
+        this.removeDino(dino);
+        j = dinosOfOneSpecies.length;
+        i = 0;
+      }
     }
   }
-}
+};
 
 Park.prototype.totalVisitorsPerDay = function(){
   numVisitors = 0;

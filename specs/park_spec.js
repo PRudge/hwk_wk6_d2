@@ -50,7 +50,7 @@ describe('Park', function() {
 
   it('should be able to remove a dinosaur from its collection', function () {
     const dinoToGo = new Dinosaur('Diplodocus', 'herbivore', 50);
-    park.removeDinoByName(dinoToGo);
+    park.removeDino(dinoToGo);
     const actual = park.collectionOfDinos.length;
     assert.strictEqual(actual, 5);
   });
@@ -64,17 +64,26 @@ describe('Park', function() {
 
   it('should be able to find all dinosaurs of a particular species', function (){
     const species = 'Tyrannosaurus';
+    let newDino = new Dinosaur('Tyrannosaurus', 'omnivore', 70);
+    park.addDino(newDino);
+    newDino = new Dinosaur('Tyrannosaurus', 'omnivore', 13);
+    park.addDino(newDino);
+
     let oneSpeciesOfDino;
 
     oneSpeciesOfDino = park.findDinosBySpecies(species);
 
-    const actual = oneSpeciesOfDino.species;
+    const actual = oneSpeciesOfDino.length;
 
-    assert.equal(actual, species);
+    assert.equal(actual, 3);
   });
 
   it('should be able to remove all dinosaurs of a particular species', function (){
     let species = 'Tyrannosaurus';
+    let newDino = new Dinosaur('Tyrannosaurus', 'omnivore', 70);
+    park.addDino(newDino);
+    newDino = new Dinosaur('Tyrannosaurus', 'omnivore', 13);
+    park.addDino(newDino);
 
     park.removeDinosBySpecies(species);
     const actual = park.collectionOfDinos.length;
