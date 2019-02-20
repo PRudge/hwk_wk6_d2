@@ -95,7 +95,7 @@ Park.prototype.dietTypeCount = function(){
   for (i = 0; i < this.collectionOfDinos.length; i++){
     dino = this.collectionOfDinos[i];
 
-    switch (dino.species) {
+    switch (dino.diet) {
       case 'herbivore': herbCount += 1;
            break;
       case 'omnivore': omniCount += 1;
@@ -105,7 +105,7 @@ Park.prototype.dietTypeCount = function(){
     }
   }
 
-  return dietType = { // MODIFIED
+  return dietType = {
   carnivore: carnCount,
   herbivore: herbCount,
   omnivore: omniCount}

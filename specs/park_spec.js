@@ -108,7 +108,7 @@ describe('Park', function() {
 
   it('should be able to create an object for diet requirements', function (){
       const dietType = park.dietTypeCount();
-      const actual = dietType.carnCount;
+      const actual = dietType.carnivore;
       assert.equal(actual, 2);
   });
 
